@@ -36,6 +36,11 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
+			<groupId>io.swagger</groupId>
+			<artifactId>swagger-annotations</artifactId>
+			<version>1.6.0</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -53,6 +58,44 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>io.swagger.codegen.v3</groupId>
+				<artifactId>swagger-codegen-maven-plugin</artifactId>
+				<version>3.0.14</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<inputSpec>${project.basedir}/swagger.yaml</inputSpec>
+							<apiPackage>com.symphony.demo.api</apiPackage>
+							<modelPackage>com.symphony.demo.api.dto</modelPackage>
+							<verbose>true</verbose>
+							<configHelp>false</configHelp>
+							<language>spring</language>
+							<generateApiDocumentation>false</generateApiDocumentation>
+							<generateApis>true</generateApis>
+							<generateApiTests>false</generateApiTests>
+							<generateModels>true</generateModels>
+							<generateModelTests>false</generateModelTests>
+							<generateSupportingFiles>false</generateSupportingFiles>
+							<languageSpecificPrimitives>true</languageSpecificPrimitives>
+							<configOptions>
+								<sourceFolder>src/gen/java/main</sourceFolder>
+								<useBeanValidation>true</useBeanValidation>
+								<performBeanValidation>true</performBeanValidation>
+								<java8>true</java8>
+								<interfaceOnly>false</interfaceOnly>
+								<dateLibrary>java8-localdatetime</dateLibrary>
+								<delegatePattern>true</delegatePattern>
+								<useTags>true</useTags>
+								<hideGenerationTimestamp>true</hideGenerationTimestamp>
+							</configOptions>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
